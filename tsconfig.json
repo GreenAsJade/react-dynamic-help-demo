@@ -6,12 +6,11 @@
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "*": [
         "*",
-        "src/*",
-        "src/Pages/*"
+        "Pages/*"
       ]
     },
     "allowJs": true,
