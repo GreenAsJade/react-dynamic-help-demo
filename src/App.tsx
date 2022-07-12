@@ -20,30 +20,76 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import logo from "./logo.svg";
 import "./App.css";
+
+import React from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useNavigate,
+} from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCog, faDice, faBars } from "@fortawesome/free-solid-svg-icons";
+
 import { Page1 } from "Pages/Page1";
 import { Page2 } from "Pages/Page2";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          If you don't know what to do, some useful help should be along soon to
-          tell you!
-        </p>
-      </header>
-      <Router>
-        <Routes>
-          <Route path="/page1" element={<Page1 />} />
-          <Route path="/page2" element={<Page2 />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+type HamburgerProps = {
+    hide: () => void;
+};
+
+function HamburgerMenu(props: HamburgerProps): JSX.Element {
+    const navigate = useNavigate();
+
+    const showPage1 = React.useCallback(() => {
+        props.hide();
+        navigate("/page1");
+    }, []);
+
+    const showPage2 = React.useCallback(() => {
+        props.hide();
+        navigate("/page2");
+    }, []);
+
+    return (
+        <div className="hamburger">
+            <FontAwesomeIcon icon={faCog} onClick={showPage2} fixedWidth />
+            <FontAwesomeIcon icon={faDice} onClick={showPage1} fixedWidth />
+        </div>
+    );
+}
+
+function App(): JSX.Element {
+    const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
+
+    const showHamburger = React.useCallback(() => {
+        setHamburgerOpen(true);
+    }, []);
+
+    const hideHamburger = React.useCallback(() => {
+        setHamburgerOpen(false);
+    }, []);
+
+    return (
+        <div className="App">
+            <Router>
+                <header className="App-header">
+                    <div className="heading">
+                        Numberz - a React Dynamic Help demo.
+                    </div>
+                    <FontAwesomeIcon icon={faBars} onClick={showHamburger} />
+                    {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}
+                </header>
+                <Routes>
+                    <Route path="/" element={<Page1 />} />
+                    <Route path="/page1" element={<Page1 />} />
+                    <Route path="/page2" element={<Page2 />} />
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
