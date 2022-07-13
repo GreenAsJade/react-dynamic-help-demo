@@ -20,21 +20,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import "./Page1.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faWandMagicSparkles,
-    faDiceD6,
-    faDiceD20,
-} from "@fortawesome/free-solid-svg-icons";
-
-export const Page1 = (): JSX.Element => {
-    return (
-        <div id="Page1">
-            <FontAwesomeIcon icon={faWandMagicSparkles} size="2x" fixedWidth />
-            <FontAwesomeIcon icon={faDiceD6} size="2x" fixedWidth />
-            <FontAwesomeIcon icon={faDiceD20} size="2x" fixedWidth />
-        </div>
-    );
-};
+export * from "./Action";

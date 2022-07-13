@@ -20,4 +20,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-export * from "./Page1";
+export type StatRange = 6 | 20 | 0;
+
+export type StatType = {
+    range: StatRange;
+    value: number | null;
+};
+
+export type StatEntriesType = {
+    [name: string]: StatType;
+};
+
+export type CharacterType = {
+    name: string;
+    stats: StatEntriesType;
+};

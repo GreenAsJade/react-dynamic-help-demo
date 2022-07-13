@@ -20,6 +20,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-export const Page2 = (): JSX.Element => {
-  return <div id="Page1">Page 2</div>;
-};
+export * from "./Config";

@@ -30,11 +30,13 @@ import {
     useNavigate,
 } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog, faDice, faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
+import { faTableList, faDice, faBars } from "@fortawesome/free-solid-svg-icons";
 
-import { Page1 } from "Pages/Page1";
-import { Page2 } from "Pages/Page2";
+import * as CharacterTypes from "CharacterTypes";
+
+import { Action } from "Pages/Action";
+import { Config } from "Pages/Config";
 
 type HamburgerProps = {
     hide: () => void;
@@ -43,26 +45,32 @@ type HamburgerProps = {
 function HamburgerMenu(props: HamburgerProps): JSX.Element {
     const navigate = useNavigate();
 
-    const showPage1 = React.useCallback(() => {
+    const showAction = React.useCallback(() => {
         props.hide();
-        navigate("/page1");
+        navigate("/action");
     }, []);
 
-    const showPage2 = React.useCallback(() => {
+    const showConfig = React.useCallback(() => {
         props.hide();
-        navigate("/page2");
+        navigate("/config");
     }, []);
 
     return (
         <div className="hamburger">
-            <FontAwesomeIcon icon={faCog} onClick={showPage2} fixedWidth />
-            <FontAwesomeIcon icon={faDice} onClick={showPage1} fixedWidth />
+            <FA icon={faTableList} onClick={showConfig} fixedWidth />
+            <FA icon={faDice} onClick={showAction} fixedWidth />
         </div>
     );
 }
 
 function App(): JSX.Element {
     const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
+
+    const [character, setCharacter] =
+        React.useState<CharacterTypes.CharacterType>({
+            name: "anonymous",
+            stats: {},
+        });
 
     const showHamburger = React.useCallback(() => {
         setHamburgerOpen(true);
@@ -72,20 +80,61 @@ function App(): JSX.Element {
         setHamburgerOpen(false);
     }, []);
 
+    const setStat = React.useCallback((stat: string, value: number): void => {
+        console.log("setting stat", value);
+        character.stats[stat].value = value;
+        setCharacter({ ...character });
+    }, []);
+
+    const resetRolls = () => {
+        for (const [stat, stat_data] of Object.entries(character.stats)) {
+            character.stats[stat] = { ...stat_data, value: null };
+        }
+        setCharacter({ ...character });
+    };
+
+    const setName = React.useCallback((name: string): void => {
+        character.name = name;
+        resetRolls();
+        setCharacter({ ...character });
+    }, []);
+
+    const configStat = React.useCallback(
+        (stat: string, range: 6 | 20): void => {
+            character.stats[stat] = { range, value: null };
+            resetRolls();
+            setCharacter({ ...character });
+        },
+        [],
+    );
+
     return (
         <div className="App">
             <Router>
                 <header className="App-header">
                     <div className="heading">
-                        Numberz - a React Dynamic Help demo.
+                        Statz - a React Dynamic Help demo.
                     </div>
-                    <FontAwesomeIcon icon={faBars} onClick={showHamburger} />
+                    <FA icon={faBars} onClick={showHamburger} />
                     {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}
                 </header>
                 <Routes>
-                    <Route path="/" element={<Page1 />} />
-                    <Route path="/page1" element={<Page1 />} />
-                    <Route path="/page2" element={<Page2 />} />
+                    <Route
+                        path="/action"
+                        element={
+                            <Action character={character} setStat={setStat} />
+                        }
+                    />
+                    <Route
+                        path="*"
+                        element={
+                            <Config
+                                character={character}
+                                setName={setName}
+                                configStat={configStat}
+                            />
+                        }
+                    />
                 </Routes>
             </Router>
         </div>
