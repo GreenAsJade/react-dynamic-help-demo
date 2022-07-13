@@ -1,0 +1,28 @@
+#action-page {
+    background-color: grey;
+    min-height: 100vh;
+    padding: 2rem 0 0 5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+}
+
+#action-page svg {
+    color: gold;
+}
+
+#action-page .character-name {
+    font-size: larger;
+    margin-bottom: 0.5rem;
+}
+
+#action-page .stat-line {
+    margin: 0.3rem;
+}
+
+#action-page .stat-line span {
+    margin-right: 1rem;
+}
+

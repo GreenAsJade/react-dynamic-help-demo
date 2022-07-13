@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import "./Page1.css";
+import "./Action.css";
 
 import * as React from "react";
 
@@ -40,18 +40,18 @@ export const Action = (props: ActionProps): JSX.Element => {
         props.setStat(name, newValue);
     };
 
-    console.log(props.character);
     return (
         <div id="action-page">
+            <h1>Generate Stats</h1>
             <div className="character-name">
-                Character: {props.character.name}
+                Character: "{props.character.name}"
             </div>
             <div className="stat-config-section">
                 {Object.keys(props.character.stats).length ? (
                     Object.entries(props.character.stats).map(
                         ([stat_name, stat]) => (
-                            <div key={stat_name} className="stat-config">
-                                <span>{stat_name}</span>
+                            <div key={stat_name} className="stat-line">
+                                <span>{stat_name}:</span>
                                 {stat.value ? (
                                     <span>{stat.value}</span>
                                 ) : (

@@ -20,6 +20,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import "./Config.css";
+
 import * as React from "react";
 
 import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
@@ -80,7 +82,8 @@ export const Config = (props: ConfigProps): JSX.Element => {
 
     return (
         <div id="config-page">
-            <div className="name-entry">
+            <h1>Configure Stats</h1>
+            <div className="character-name">
                 {!editNameOpen ? (
                     <>
                         <span>Character: {props.character.name}</span>

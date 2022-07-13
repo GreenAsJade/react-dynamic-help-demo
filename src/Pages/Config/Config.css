@@ -1,0 +1,33 @@
+#config-page {
+    background-color: lightslategray;
+    min-height: 100vh;
+    padding: 2rem 0 0 5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+}
+
+
+#config-page .character-name {
+    font-size: larger;
+    margin-bottom: 0.5rem;
+}
+
+#config-page .character-name svg {
+    margin-left: 0.3rem;
+}
+
+#config-page .stat-config {
+    margin: 0.3rem;
+}
+
+#config-page .stat-config span {
+    margin-right: 1rem;
+}
+
+#config-page .add-a-stat svg {
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}

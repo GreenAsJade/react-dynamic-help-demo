@@ -7,6 +7,7 @@
   justify-content: right;
   font-size: calc(10px + 2vmin);
   color: white;
+  height: 5rem;
 }
 
 .heading {
@@ -19,3 +20,17 @@ header .fa-bars {
   margin-right: 0.5rem;
 }
 
+.hamburger {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 5rem;
+  right: 0rem;
+  z-index: 100;
+  background: rgba(44, 0, 139, 10%);
+  padding: 1rem;
+}
+
+.hamburger svg {
+  margin: 5px;
+}
