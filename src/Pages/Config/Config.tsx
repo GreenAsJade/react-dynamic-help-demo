@@ -34,6 +34,8 @@ import {
     faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useDynamicHelpTarget } from "react-dynamic-help";
+
 import * as CharacterTypes from "CharacterTypes";
 
 type ConfigProps = {
@@ -80,6 +82,10 @@ export const Config = (props: ConfigProps): JSX.Element => {
         setNewStatEntryOpen(false);
     };
 
+    const addStatButton = React.useRef(null);
+
+    useDynamicHelpTarget(addStatButton, "add-stat-button");
+
     return (
         <div id="config-page">
             <h1>Configure Stats</h1>
@@ -92,7 +98,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
                 ) : (
                     <>
                         <span>
-                            Character:{" "}
+                            Character:
                             <input
                                 type="text"
                                 placeholder="new character name"
@@ -142,7 +148,11 @@ export const Config = (props: ConfigProps): JSX.Element => {
                         <FA icon={faCheckCircle} onClick={saveNewStat} />
                     </div>
                 ) : (
-                    <FA icon={faCirclePlus} onClick={addStat} />
+                    <FA
+                        ref={addStatButton}
+                        icon={faCirclePlus}
+                        onClick={addStat}
+                    />
                 )}
             </div>
         </div>
