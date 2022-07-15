@@ -20,13 +20,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import * as React from "react";
+
 import { HelpFlow, HelpItem } from "react-dynamic-help";
 
 export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
-            <HelpFlow id="welcome">
-                <HelpItem id="the-button">
+            <HelpFlow id="welcome" showInitially={true}>
+                <HelpItem id="the-button" target="add-stat-button">
                     <div>Click the button</div>
                 </HelpItem>
             </HelpFlow>

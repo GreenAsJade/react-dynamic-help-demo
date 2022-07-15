@@ -33,10 +33,13 @@ import {
 import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 import { faTableList, faDice, faBars } from "@fortawesome/free-solid-svg-icons";
 
+import * as DynamicHelp from "react-dynamic-help";
+
 import * as CharacterTypes from "CharacterTypes";
 
 import { Action } from "Pages/Action";
 import { Config } from "Pages/Config";
+import { HelpFlows } from "HelpFlows/HelpFlows";
 
 type HamburgerProps = {
     hide: () => void;
@@ -110,33 +113,41 @@ function App(): JSX.Element {
 
     return (
         <div className="App">
-            <Router>
-                <header className="App-header">
-                    <div className="heading">
-                        Statz - a React Dynamic Help demo.
-                    </div>
-                    <FA icon={faBars} onClick={showHamburger} />
-                    {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}
-                </header>
-                <Routes>
-                    <Route
-                        path="/action"
-                        element={
-                            <Action character={character} setStat={setStat} />
-                        }
-                    />
-                    <Route
-                        path="*"
-                        element={
-                            <Config
-                                character={character}
-                                setName={setName}
-                                configStat={configStat}
-                            />
-                        }
-                    />
-                </Routes>
-            </Router>
+            <DynamicHelp.DynamicHelpProvider value={{}}>
+                <HelpFlows />
+                <Router>
+                    <header className="App-header">
+                        <div className="heading">
+                            Statz - a React Dynamic Help demo.
+                        </div>
+                        <FA icon={faBars} onClick={showHamburger} />
+                        {hamburgerOpen && (
+                            <HamburgerMenu hide={hideHamburger} />
+                        )}
+                    </header>
+                    <Routes>
+                        <Route
+                            path="/action"
+                            element={
+                                <Action
+                                    character={character}
+                                    setStat={setStat}
+                                />
+                            }
+                        />
+                        <Route
+                            path="*"
+                            element={
+                                <Config
+                                    character={character}
+                                    setName={setName}
+                                    configStat={configStat}
+                                />
+                            }
+                        />
+                    </Routes>
+                </Router>
+            </DynamicHelp.DynamicHelpProvider>
         </div>
     );
 }
