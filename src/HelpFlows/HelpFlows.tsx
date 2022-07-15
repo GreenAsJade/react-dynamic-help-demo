@@ -31,6 +31,9 @@ export function HelpFlows(): JSX.Element {
                 <HelpItem id="the-button" target="add-stat-button">
                     <div>Click the button</div>
                 </HelpItem>
+                <HelpItem id="the-other-button" target="add-stat-button">
+                    <div>Click the other button</div>
+                </HelpItem>
             </HelpFlow>
         </div>
     );

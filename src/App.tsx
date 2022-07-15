@@ -39,6 +39,7 @@ import * as CharacterTypes from "CharacterTypes";
 
 import { Action } from "Pages/Action";
 import { Config } from "Pages/Config";
+
 import { HelpFlows } from "HelpFlows/HelpFlows";
 
 type HamburgerProps = {
@@ -113,7 +114,9 @@ function App(): JSX.Element {
 
     return (
         <div className="App">
-            <DynamicHelp.DynamicHelpProvider value={{}}>
+            <DynamicHelp.DynamicHelpProvider
+                value={DynamicHelp.useDynamicHelpState()}
+            >
                 <HelpFlows />
                 <Router>
                     <header className="App-header">
