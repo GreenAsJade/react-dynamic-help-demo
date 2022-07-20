@@ -68,22 +68,34 @@ function HamburgerMenu(props: HamburgerProps): JSX.Element {
 }
 
 function AppHelpToggle(): JSX.Element {
-    const [visible, setVisible] = React.useState(false);
-    const helpApi = React.useContext(DynamicHelp.Api);
-    console.log("App help toggle sees", helpApi);
+    const [appHelpVisible, setVisible] = React.useState(false);
+    const { registerTargetItem, enableFlow, enableHelp } = React.useContext(
+        DynamicHelp.Api,
+    );
 
-    const registerTargetItem = helpApi.registerTargetItem;
-    const { ref: helpToggle, used: toggleWasUsed } =
+    const { ref: helpToggle, used: signalButtonUsed } =
         registerTargetItem("help-toggle");
 
     const toggleHelpVis = () => {
-        setVisible(!visible);
-        toggleWasUsed();
+        if (appHelpVisible) {
+            enableFlow("new-user");
+            enableHelp(false);
+        } else {
+            signalButtonUsed();
+            enableFlow("basic");
+            enableHelp("true");
+        }
+        setVisible(!appHelpVisible);
     };
 
     return (
         <div id="HelpToggle" ref={helpToggle}>
-            <button onClick={toggleHelpVis}>?</button>
+            <button
+                onClick={toggleHelpVis}
+                className={appHelpVisible ? "visible" : ""}
+            >
+                ?
+            </button>
         </div>
     );
 }

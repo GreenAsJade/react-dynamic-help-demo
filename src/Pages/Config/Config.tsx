@@ -65,6 +65,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
 
     const addStat = () => {
         setNewStatEntryOpen(true);
+        signalAddStatUsed();
     };
 
     const saveName = () => {
@@ -83,10 +84,9 @@ export const Config = (props: ConfigProps): JSX.Element => {
 
     const { registerTargetItem } = React.useContext(DynamicHelp.Api);
 
-    const { ref: addStatButton } = registerTargetItem("add-stat-button");
+    const { ref: addStatButton, used: signalAddStatUsed } =
+        registerTargetItem("add-stat-button");
     const { ref: diceChooser } = registerTargetItem("dice-chooser");
-
-    console.log("Config sees API:", registerTargetItem);
 
     return (
         <div id="config-page">
