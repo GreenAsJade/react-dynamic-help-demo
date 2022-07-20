@@ -20,19 +20,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import * as React from "react";
-
 import { HelpFlow, HelpItem } from "react-dynamic-help";
 
 export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
-            <HelpFlow id="welcome" showInitially={true}>
-                <HelpItem id="the-button" target="add-stat-button">
-                    <div>Click the button</div>
+            <HelpFlow id="basic" showInitially={false}>
+                <HelpItem id="help-for-add-stat" target="add-stat-button">
+                    <div>Click to add a stat</div>
                 </HelpItem>
-                <HelpItem id="the-other-button" target="add-stat-button">
-                    <div>Click the other button</div>
+                <HelpItem id="help-for-dice-choice" target="dice-chooser">
+                    <div>Choose a dice type</div>
+                </HelpItem>
+            </HelpFlow>
+            <HelpFlow id="new-user" showInitially={true}>
+                <HelpItem id="help-for-help-toggle" target="help-toggle">
+                    <div>Click here to see more Dynamic Help</div>
                 </HelpItem>
             </HelpFlow>
         </div>

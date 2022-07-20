@@ -34,3 +34,11 @@ header .fa-bars {
 .hamburger svg {
   margin: 5px;
 }
+
+#HelpToggle {
+  z-index: 100;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

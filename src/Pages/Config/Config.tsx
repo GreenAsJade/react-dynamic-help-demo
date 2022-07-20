@@ -23,6 +23,7 @@ SOFTWARE.
 import "./Config.css";
 
 import * as React from "react";
+import * as DynamicHelp from "react-dynamic-help";
 
 import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 import {
@@ -33,8 +34,6 @@ import {
     faSquarePen,
     faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
-
-import { useDynamicHelpTarget } from "react-dynamic-help";
 
 import * as CharacterTypes from "CharacterTypes";
 
@@ -82,9 +81,12 @@ export const Config = (props: ConfigProps): JSX.Element => {
         setNewStatEntryOpen(false);
     };
 
-    const addStatButton = React.useRef(null);
+    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
 
-    useDynamicHelpTarget(addStatButton, "add-stat-button");
+    const { ref: addStatButton } = registerTargetItem("add-stat-button");
+    const { ref: diceChooser } = registerTargetItem("dice-chooser");
+
+    console.log("Config sees API:", registerTargetItem);
 
     return (
         <div id="config-page">
@@ -138,6 +140,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
                             onChange={updateNewStatName}
                         />
                         <select
+                            ref={diceChooser}
                             value={newStatRange}
                             onChange={updateNewStatRange}
                         >

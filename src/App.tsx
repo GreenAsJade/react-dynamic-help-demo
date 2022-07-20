@@ -67,6 +67,36 @@ function HamburgerMenu(props: HamburgerProps): JSX.Element {
     );
 }
 
+function AppHelpToggle(): JSX.Element {
+    const [visible, setVisible] = React.useState(false);
+    const helpApi = React.useContext(DynamicHelp.Api);
+    console.log("App help toggle sees", helpApi);
+
+    const registerTargetItem = helpApi.registerTargetItem;
+    const { ref: helpToggle, used: toggleWasUsed } =
+        registerTargetItem("help-toggle");
+
+    const toggleHelpVis = () => {
+        setVisible(!visible);
+        toggleWasUsed();
+    };
+
+    return (
+        <div id="HelpToggle" ref={helpToggle}>
+            <button onClick={toggleHelpVis}>?</button>
+        </div>
+    );
+}
+
+function AppWithHelp(): JSX.Element {
+    return (
+        <DynamicHelp.HelpProvider>
+            <App />
+            <HelpFlows />
+        </DynamicHelp.HelpProvider>
+    );
+}
+
 function App(): JSX.Element {
     const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
 
@@ -112,47 +142,39 @@ function App(): JSX.Element {
         [],
     );
 
+    console.log("App render");
     return (
         <div className="App">
-            <DynamicHelp.DynamicHelpProvider
-                value={DynamicHelp.useDynamicHelpState()}
-            >
-                <HelpFlows />
-                <Router>
-                    <header className="App-header">
-                        <div className="heading">
-                            Statz - a React Dynamic Help demo.
-                        </div>
-                        <FA icon={faBars} onClick={showHamburger} />
-                        {hamburgerOpen && (
-                            <HamburgerMenu hide={hideHamburger} />
-                        )}
-                    </header>
-                    <Routes>
-                        <Route
-                            path="/action"
-                            element={
-                                <Action
-                                    character={character}
-                                    setStat={setStat}
-                                />
-                            }
-                        />
-                        <Route
-                            path="*"
-                            element={
-                                <Config
-                                    character={character}
-                                    setName={setName}
-                                    configStat={configStat}
-                                />
-                            }
-                        />
-                    </Routes>
-                </Router>
-            </DynamicHelp.DynamicHelpProvider>
+            <AppHelpToggle />
+            <Router>
+                <header className="App-header">
+                    <div className="heading">
+                        Statz - a React Dynamic Help demo.
+                    </div>
+                    <FA icon={faBars} onClick={showHamburger} />
+                    {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}
+                </header>
+                <Routes>
+                    <Route
+                        path="/action"
+                        element={
+                            <Action character={character} setStat={setStat} />
+                        }
+                    />
+                    <Route
+                        path="*"
+                        element={
+                            <Config
+                                character={character}
+                                setName={setName}
+                                configStat={configStat}
+                            />
+                        }
+                    />
+                </Routes>
+            </Router>
         </div>
     );
 }
 
-export default App;
+export default AppWithHelp;
