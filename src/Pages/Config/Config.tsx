@@ -52,12 +52,24 @@ export const Config = (props: ConfigProps): JSX.Element => {
     const [newStatRange, setNewStatRange] =
         React.useState<CharacterTypes.StatRange>(0);
 
+    // Connect targets to help system...
+
+    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
+
+    const { ref: addStatButton, used: signalAddStatUsed } =
+        registerTargetItem("add-stat-button");
+    const { ref: diceChooser, used: signalDiceSelected } =
+        registerTargetItem("dice-chooser");
+
+    // App UI functionality
     const updateCharacterName = (ev: any) =>
         setNewCharacterName(ev.target.value);
 
     const updateNewStatName = (ev: any) => setNewStatName(ev.target.value);
-    const updateNewStatRange = (ev: any) =>
+    const updateNewStatRange = (ev: any) => {
+        signalDiceSelected();
         setNewStatRange(parseInt(ev.target.value) as CharacterTypes.StatRange);
+    };
 
     const editName = () => {
         setEditNameOpen(true);
@@ -81,12 +93,6 @@ export const Config = (props: ConfigProps): JSX.Element => {
         }
         setNewStatEntryOpen(false);
     };
-
-    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
-
-    const { ref: addStatButton, used: signalAddStatUsed } =
-        registerTargetItem("add-stat-button");
-    const { ref: diceChooser } = registerTargetItem("dice-chooser");
 
     return (
         <div id="config-page">
