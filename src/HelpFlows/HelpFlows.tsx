@@ -25,17 +25,23 @@ import { HelpFlow, HelpItem } from "react-dynamic-help";
 export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
+            <HelpFlow id="new-user" showInitially={true}>
+                <HelpItem id="help-for-help-toggle" target="help-toggle">
+                    <div>Click here to see more Dynamic Help</div>
+                </HelpItem>
+            </HelpFlow>
             <HelpFlow id="basic" showInitially={false}>
                 <HelpItem id="help-for-add-stat" target="add-stat-button">
                     <div>Click to add a stat</div>
                 </HelpItem>
+                <HelpItem id="help-for-stat-name" target="stat-name-input">
+                    <div>Enter the name for a stat</div>
+                </HelpItem>
                 <HelpItem id="help-for-dice-choice" target="dice-chooser">
                     <div>Choose a dice type</div>
                 </HelpItem>
-            </HelpFlow>
-            <HelpFlow id="new-user" showInitially={true}>
-                <HelpItem id="help-for-help-toggle" target="help-toggle">
-                    <div>Click here to see more Dynamic Help</div>
+                <HelpItem id="help-for-stat-ok" target="stat-ok">
+                    <div>OK?</div>
                 </HelpItem>
             </HelpFlow>
         </div>

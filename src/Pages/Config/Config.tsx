@@ -55,17 +55,22 @@ export const Config = (props: ConfigProps): JSX.Element => {
     // Connect targets to help system...
 
     const { registerTargetItem } = React.useContext(DynamicHelp.Api);
-
+    const { ref: statNameInput, used: statNameUsed } =
+        registerTargetItem("stat-name-input");
     const { ref: addStatButton, used: signalAddStatUsed } =
         registerTargetItem("add-stat-button");
     const { ref: diceChooser, used: signalDiceSelected } =
         registerTargetItem("dice-chooser");
+    const { ref: statOK, used: signalStatOK } = registerTargetItem("stat-ok");
 
     // App UI functionality
     const updateCharacterName = (ev: any) =>
         setNewCharacterName(ev.target.value);
 
-    const updateNewStatName = (ev: any) => setNewStatName(ev.target.value);
+    const updateNewStatName = (ev: any) => {
+        setNewStatName(ev.target.value);
+        statNameUsed();
+    };
     const updateNewStatRange = (ev: any) => {
         signalDiceSelected();
         setNewStatRange(parseInt(ev.target.value) as CharacterTypes.StatRange);
@@ -92,6 +97,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
             props.configStat(newStatName, newStatRange);
         }
         setNewStatEntryOpen(false);
+        signalStatOK();
     };
 
     return (
@@ -144,6 +150,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
                             type="text"
                             placeholder="new stat name"
                             onChange={updateNewStatName}
+                            ref={statNameInput}
                         />
                         <select
                             ref={diceChooser}
@@ -154,7 +161,11 @@ export const Config = (props: ConfigProps): JSX.Element => {
                             <option value={6}>d6</option>
                             <option value={20}>d20</option>
                         </select>
-                        <FA icon={faCheckCircle} onClick={saveNewStat} />
+                        <FA
+                            icon={faCheckCircle}
+                            onClick={saveNewStat}
+                            ref={statOK}
+                        />
                     </div>
                 ) : (
                     <FA
