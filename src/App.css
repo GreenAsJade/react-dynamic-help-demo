@@ -43,6 +43,12 @@ header .fa-bars {
   left: 0;
 }
 
+#HelpToggle button {
+  border-style: solid;
+  border-color: black;
+  border-radius: 1rem;
+}
+
 .visible {
   background-color: red;
 }
