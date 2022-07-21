@@ -112,6 +112,9 @@ function AppWithHelp(): JSX.Element {
 function App(): JSX.Element {
     const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
 
+    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
+    const { ref: burger, used: burgerClicked } = registerTargetItem("burger");
+
     const [character, setCharacter] =
         React.useState<CharacterTypes.CharacterType>({
             name: "anonymous",
@@ -120,7 +123,8 @@ function App(): JSX.Element {
 
     const showHamburger = React.useCallback(() => {
         setHamburgerOpen(true);
-    }, []);
+        burgerClicked();
+    }, [burgerClicked]);
 
     const hideHamburger = React.useCallback(() => {
         setHamburgerOpen(false);
@@ -154,7 +158,6 @@ function App(): JSX.Element {
         [],
     );
 
-    console.log("App render");
     return (
         <div className="App">
             <AppHelpToggle />
@@ -163,7 +166,7 @@ function App(): JSX.Element {
                     <div className="heading">
                         Statz - a React Dynamic Help demo.
                     </div>
-                    <FA icon={faBars} onClick={showHamburger} />
+                    <FA icon={faBars} onClick={showHamburger} ref={burger} />
                     {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}
                 </header>
                 <Routes>

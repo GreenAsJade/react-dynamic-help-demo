@@ -34,14 +34,36 @@ export function HelpFlows(): JSX.Element {
                 <HelpItem id="help-for-add-stat" target="add-stat-button">
                     <div>Click to add a stat</div>
                 </HelpItem>
-                <HelpItem id="help-for-stat-name" target="stat-name-input">
+                <HelpItem
+                    id="help-for-stat-name"
+                    target="stat-name-input"
+                    position="bottom-centre"
+                >
                     <div>Enter the name for a stat</div>
                 </HelpItem>
-                <HelpItem id="help-for-dice-choice" target="dice-chooser">
+                <HelpItem
+                    id="help-for-dice-choice"
+                    target="dice-chooser"
+                    position="bottom-centre"
+                >
                     <div>Choose a dice type</div>
                 </HelpItem>
                 <HelpItem id="help-for-stat-ok" target="stat-ok">
                     <div>OK?</div>
+                </HelpItem>
+                <HelpItem
+                    id="help-for-name-entry"
+                    target="name-button"
+                    position="center-right"
+                >
+                    <div>Now you should enter your Character name...</div>
+                </HelpItem>
+                <HelpItem
+                    id="help-for-burger"
+                    target="burger"
+                    position="bottom-left"
+                >
+                    <div>... and go to the dice page to roll your stats!</div>
                 </HelpItem>
             </HelpFlow>
         </div>

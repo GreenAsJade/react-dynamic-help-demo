@@ -62,6 +62,8 @@ export const Config = (props: ConfigProps): JSX.Element => {
     const { ref: diceChooser, used: signalDiceSelected } =
         registerTargetItem("dice-chooser");
     const { ref: statOK, used: signalStatOK } = registerTargetItem("stat-ok");
+    const { ref: nameButton, used: editNameClicked } =
+        registerTargetItem("name-button");
 
     // App UI functionality
     const updateCharacterName = (ev: any) =>
@@ -78,6 +80,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
 
     const editName = () => {
         setEditNameOpen(true);
+        editNameClicked();
     };
 
     const addStat = () => {
@@ -107,7 +110,11 @@ export const Config = (props: ConfigProps): JSX.Element => {
                 {!editNameOpen ? (
                     <>
                         <span>Character: {props.character.name}</span>
-                        <FA icon={faSquarePen} onClick={editName} />
+                        <FA
+                            icon={faSquarePen}
+                            onClick={editName}
+                            ref={nameButton}
+                        />
                     </>
                 ) : (
                     <>
