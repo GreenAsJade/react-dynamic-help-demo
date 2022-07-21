@@ -46,9 +46,13 @@ header .fa-bars {
 #HelpToggle button {
   border-style: solid;
   border-color: black;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 }
 
 .visible {
   background-color: red;
+}
+
+.rdh-help-item.rdh-help-item-custom {
+  color: white;
 }
