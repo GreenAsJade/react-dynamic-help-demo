@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-dynamic-help-demo/static/css/main.a5974de8.css",
+    "main.js": "/react-dynamic-help-demo/static/js/main.58a72b53.js",
+    "index.html": "/react-dynamic-help-demo/index.html",
+    "main.a5974de8.css.map": "/react-dynamic-help-demo/static/css/main.a5974de8.css.map",
+    "main.58a72b53.js.map": "/react-dynamic-help-demo/static/js/main.58a72b53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5974de8.css",
+    "static/js/main.58a72b53.js"
+  ]
+}
