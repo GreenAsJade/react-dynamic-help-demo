@@ -1,6 +1,7 @@
 {
   "name": "react-dynamic-help-demo",
   "version": "0.1.0",
+  "homepage": "https://greenasjade.github.io/react-dynamic-help-demo",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -25,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
@@ -42,6 +45,7 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^42.0.0",
+    "gh-pages": "^4.0.0",
     "prettier": "2.6.2",
     "prettier-eslint": "^15.0.1",
     "ts-jest": "^26.5.6",
