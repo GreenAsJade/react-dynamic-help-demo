@@ -26,40 +26,29 @@ export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
             <HelpFlow id="new-user" showInitially={true}>
-                <HelpItem id="help-for-help-toggle" target="help-toggle">
+                <HelpItem target="help-toggle">
                     <div>Click here to see more Dynamic Help</div>
                 </HelpItem>
             </HelpFlow>
+
             <HelpFlow id="basic" showInitially={false}>
-                <HelpItem id="help-for-add-stat" target="add-stat-button">
+                <HelpItem target="add-stat-button">
                     <div>Click to add a stat</div>
                 </HelpItem>
-                <HelpItem
-                    id="help-for-stat-name"
-                    target="stat-name-input"
-                    position="bottom-centre"
-                >
+                <HelpItem target="stat-name-input" position="bottom-centre">
                     <div>Enter the name for a stat</div>
                 </HelpItem>
-                <HelpItem
-                    id="help-for-dice-choice"
-                    target="dice-chooser"
-                    position="bottom-centre"
-                >
+                <HelpItem target="dice-chooser" position="bottom-centre">
                     <div>Choose a dice type</div>
                 </HelpItem>
                 <HelpItem id="help-for-stat-ok" target="stat-ok">
                     <div>OK?</div>
                 </HelpItem>
-                <HelpItem
-                    id="help-for-name-entry"
-                    target="name-button"
-                    position="center-right"
-                >
+                <HelpItem target="name-button" position="center-right">
                     <div>Now you should enter your Character name...</div>
                 </HelpItem>
                 <HelpItem
-                    id="help-for-burger"
+                    id="special-help-item"
                     target="burger"
                     position="bottom-left"
                 >

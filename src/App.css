@@ -56,3 +56,10 @@ header .fa-bars {
 .rdh-help-item.rdh-help-item-custom {
   color: white;
 }
+
+#special-help-item {
+  background-color: chocolate; /* mmm chocolate! */
+  border-width: 1px;
+  border-color: chocolate;
+  box-shadow: 0px 0px 0px 8px rgba(210, 105, 30, 0.3);  
+}
