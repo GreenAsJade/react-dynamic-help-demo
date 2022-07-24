@@ -38,29 +38,26 @@ type ActionProps = {
 
 export const Action = (props: ActionProps): JSX.Element => {
     // Connect targets to help system...
-
     const { registerTargetItem, enableFlow } = React.useContext(
         DynamicHelp.Api,
     );
     const { ref: dice, used: diceUsed } = registerTargetItem("actual-dice");
 
+    // Actual UI functionality
     const rollFor = (name: string, range: CharacterTypes.StatRange) => {
+        const unRolled = Object.values(props.character.stats).reduce(
+            (prev, current) => prev + (current.value === null ? 1 : 0),
+            0,
+        );
+
+        if (unRolled === 1) {
+            enableFlow("finished-rolling");
+        }
+
         const newValue = Math.floor(Math.random() * range) + 1;
         props.setStat(name, newValue);
         diceUsed();
     };
-
-    React.useEffect(() => {
-        if (
-            !!Object.keys(props.character.stats).length &&
-            Object.values(props.character.stats).reduce(
-                (prev, current) => !!prev && !!current.value,
-                true,
-            )
-        ) {
-            enableFlow("finished-rolling");
-        }
-    });
 
     return (
         <div id="action-page">

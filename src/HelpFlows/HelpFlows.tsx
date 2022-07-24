@@ -101,6 +101,14 @@ export function HelpFlows(): JSX.Element {
                         Config page
                     </div>
                 </HelpItem>
+                <HelpItem
+                    target="hamburger-config"
+                    position="top-left"
+                    anchor={"top-right"}
+                    margin="0 3px 0 0"
+                >
+                    <FA icon={faArrowRight} fixedWidth />
+                </HelpItem>
             </HelpFlow>
 
             <HelpFlow id="testing" showInitially={false}>
