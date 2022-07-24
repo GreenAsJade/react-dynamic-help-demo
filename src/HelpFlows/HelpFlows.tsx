@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { HelpFlow, HelpItem } from "react-dynamic-help";
 
 import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
@@ -28,17 +28,6 @@ import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
-            <HelpFlow id="testing" showInitially={false}>
-                <HelpItem
-                    target="dice"
-                    position="top-left"
-                    anchor={"top-right"}
-                    margin="0 3px 0 0"
-                >
-                    <FA icon={faArrowRight} fixedWidth />
-                </HelpItem>
-            </HelpFlow>
-
             <HelpFlow id="new-user" showInitially={true}>
                 <HelpItem target="help-toggle">
                     <div>Click here to see more Dynamic Help</div>
@@ -86,6 +75,35 @@ export function HelpFlows(): JSX.Element {
                         </div>
                     </>
                 </HelpItem>
+                <HelpItem
+                    target="hamburger-dice"
+                    position="top-left"
+                    anchor={"top-right"}
+                    margin="0 3px 0 0"
+                >
+                    <FA icon={faArrowRight} fixedWidth />
+                </HelpItem>
+                <HelpItem
+                    target="actual-dice"
+                    position="bottom-right"
+                    anchor="bottom-left"
+                    margin="0 0 -4px 3px"
+                >
+                    <FA icon={faArrowLeft} fixedWidth />
+                    <span>now click to roll!</span>
+                </HelpItem>
+            </HelpFlow>
+
+            <HelpFlow id="finished-rolling" showInitially={false}>
+                <HelpItem target="burger" position="bottom-left">
+                    <div>
+                        Now you can go back and set up another character, on the
+                        Config page
+                    </div>
+                </HelpItem>
+            </HelpFlow>
+
+            <HelpFlow id="testing" showInitially={false}>
                 <HelpItem
                     target="dice"
                     position="top-left"

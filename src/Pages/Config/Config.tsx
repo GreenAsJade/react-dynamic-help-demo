@@ -80,7 +80,6 @@ export const Config = (props: ConfigProps): JSX.Element => {
 
     const editName = () => {
         setEditNameOpen(true);
-        editNameClicked();
     };
 
     const addStat = () => {
@@ -91,6 +90,7 @@ export const Config = (props: ConfigProps): JSX.Element => {
     const saveName = () => {
         if (newCharacterName !== "") {
             props.setName(newCharacterName);
+            editNameClicked();
         }
         setEditNameOpen(false);
     };

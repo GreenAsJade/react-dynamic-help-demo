@@ -27,6 +27,8 @@ import * as React from "react";
 import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 import { faDiceD6, faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 
+import * as DynamicHelp from "react-dynamic-help";
+
 import * as CharacterTypes from "CharacterTypes";
 
 type ActionProps = {
@@ -35,10 +37,30 @@ type ActionProps = {
 };
 
 export const Action = (props: ActionProps): JSX.Element => {
+    // Connect targets to help system...
+
+    const { registerTargetItem, enableFlow } = React.useContext(
+        DynamicHelp.Api,
+    );
+    const { ref: dice, used: diceUsed } = registerTargetItem("actual-dice");
+
     const rollFor = (name: string, range: CharacterTypes.StatRange) => {
         const newValue = Math.floor(Math.random() * range) + 1;
         props.setStat(name, newValue);
+        diceUsed();
     };
+
+    React.useEffect(() => {
+        if (
+            !!Object.keys(props.character.stats).length &&
+            Object.values(props.character.stats).reduce(
+                (prev, current) => !!prev && !!current.value,
+                true,
+            )
+        ) {
+            enableFlow("finished-rolling");
+        }
+    });
 
     return (
         <div id="action-page">
@@ -49,13 +71,14 @@ export const Action = (props: ActionProps): JSX.Element => {
             <div className="stat-config-section">
                 {Object.keys(props.character.stats).length ? (
                     Object.entries(props.character.stats).map(
-                        ([stat_name, stat]) => (
+                        ([stat_name, stat], index: number) => (
                             <div key={stat_name} className="stat-line">
                                 <span>{stat_name}:</span>
                                 {stat.value ? (
                                     <span>{stat.value}</span>
                                 ) : (
                                     <FA
+                                        ref={index === 0 ? dice : null}
                                         icon={
                                             stat.range === 6
                                                 ? faDiceD6

@@ -47,8 +47,11 @@ type HamburgerProps = {
 };
 
 function HamburgerMenu(props: HamburgerProps): JSX.Element {
-    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
-    const { ref: dice, used: diceClicked } = registerTargetItem("dice");
+    const { registerTargetItem, signalUsed } = React.useContext(
+        DynamicHelp.Api,
+    );
+    const { ref: dice, used: diceClicked } =
+        registerTargetItem("hamburger-dice");
 
     const navigate = useNavigate();
 
@@ -60,6 +63,7 @@ function HamburgerMenu(props: HamburgerProps): JSX.Element {
 
     const showConfig = React.useCallback(() => {
         props.hide();
+        signalUsed("burger");
         navigate("/config");
     }, []);
 
@@ -128,7 +132,7 @@ function App(): JSX.Element {
     const showHamburger = React.useCallback(() => {
         setHamburgerOpen(true);
         burgerClicked();
-    }, [burgerClicked]);
+    }, [burgerClicked, hamburgerOpen]);
 
     const hideHamburger = React.useCallback(() => {
         setHamburgerOpen(false);
