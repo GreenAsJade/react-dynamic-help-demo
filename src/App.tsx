@@ -47,11 +47,15 @@ type HamburgerProps = {
 };
 
 function HamburgerMenu(props: HamburgerProps): JSX.Element {
+    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
+    const { ref: dice, used: diceClicked } = registerTargetItem("dice");
+
     const navigate = useNavigate();
 
     const showAction = React.useCallback(() => {
         props.hide();
         navigate("/action");
+        diceClicked();
     }, []);
 
     const showConfig = React.useCallback(() => {
@@ -62,7 +66,7 @@ function HamburgerMenu(props: HamburgerProps): JSX.Element {
     return (
         <div className="hamburger">
             <FA icon={faTableList} onClick={showConfig} fixedWidth />
-            <FA icon={faDice} onClick={showAction} fixedWidth />
+            <FA icon={faDice} onClick={showAction} fixedWidth ref={dice} />
         </div>
     );
 }

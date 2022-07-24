@@ -20,11 +20,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { HelpFlow, HelpItem } from "react-dynamic-help";
+
+import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
 
 export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
+            <HelpFlow id="testing" showInitially={false}>
+                <HelpItem
+                    target="dice"
+                    position="top-left"
+                    anchor={"top-right"}
+                    margin="0 3px 0 0"
+                >
+                    <FA icon={faArrowRight} fixedWidth />
+                </HelpItem>
+            </HelpFlow>
+
             <HelpFlow id="new-user" showInitially={true}>
                 <HelpItem target="help-toggle">
                     <div>Click here to see more Dynamic Help</div>
@@ -36,10 +50,18 @@ export function HelpFlows(): JSX.Element {
                     <div>Click to add a stat</div>
                 </HelpItem>
                 <HelpItem target="stat-name-input" position="bottom-centre">
-                    <div>Enter the name for a stat</div>
+                    <>
+                        <div>Enter the name for a stat</div>
+                        <div className="demo-note">
+                            (positioned differently){" "}
+                        </div>
+                    </>
                 </HelpItem>
                 <HelpItem target="dice-chooser" position="bottom-centre">
                     <div>Choose a dice type</div>
+                    <div className="demo-note">
+                        (targets a different HTML element type)
+                    </div>
                 </HelpItem>
                 <HelpItem id="help-for-stat-ok" target="stat-ok">
                     <div>OK?</div>
@@ -52,7 +74,25 @@ export function HelpFlows(): JSX.Element {
                     target="burger"
                     position="bottom-left"
                 >
-                    <div>... and go to the dice page to roll your stats!</div>
+                    <>
+                        <div>
+                            ... and go to the dice page to roll your stats!
+                        </div>
+                        <div className="demo-note">
+                            (help item with custom id for styling...
+                        </div>
+                        <div className="demo-note">
+                            ... same flow, item in different Route)
+                        </div>
+                    </>
+                </HelpItem>
+                <HelpItem
+                    target="dice"
+                    position="top-left"
+                    anchor={"top-right"}
+                    margin="0 3px 0 0"
+                >
+                    <FA icon={faArrowRight} fixedWidth />
                 </HelpItem>
             </HelpFlow>
         </div>
