@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-dynamic-help-demo/static/css/main.001e6d42.css",
-    "main.js": "/react-dynamic-help-demo/static/js/main.027d689b.js",
+    "main.js": "/react-dynamic-help-demo/static/js/main.fe63c86f.js",
     "index.html": "/react-dynamic-help-demo/index.html",
     "main.001e6d42.css.map": "/react-dynamic-help-demo/static/css/main.001e6d42.css.map",
-    "main.027d689b.js.map": "/react-dynamic-help-demo/static/js/main.027d689b.js.map"
+    "main.fe63c86f.js.map": "/react-dynamic-help-demo/static/js/main.fe63c86f.js.map"
   },
   "entrypoints": [
     "static/css/main.001e6d42.css",
-    "static/js/main.027d689b.js"
+    "static/js/main.fe63c86f.js"
   ]
 }
