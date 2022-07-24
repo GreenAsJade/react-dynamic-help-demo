@@ -53,11 +53,11 @@ header .fa-bars {
   background-color: red;
 }
 
-.rdh-help-item.rdh-help-item-custom {
+.rdh-help-item  {
   color: white;
 }
 
-.rdh-help-item.rdh-help-item-custom .demo-note {
+.rdh-help-item .rdh-help-item-custom .demo-note {
   font-size: smaller;
   font-style: italic;
   text-align: center;
