@@ -127,6 +127,7 @@ function App(): JSX.Element {
 
     const { registerTargetItem } = React.useContext(DynamicHelp.Api);
     const { ref: burger, used: burgerClicked } = registerTargetItem("burger");
+    const { ref: heading } = registerTargetItem("heading");
 
     const [character, setCharacter] =
         React.useState<CharacterTypes.CharacterType>({
@@ -176,7 +177,7 @@ function App(): JSX.Element {
             <AppHelpToggle />
             <Router>
                 <header className="App-header">
-                    <div className="heading">
+                    <div className="heading" ref={heading}>
                         Statz - a React Dynamic Help demo.
                     </div>
                     <FA icon={faBars} onClick={showHamburger} ref={burger} />

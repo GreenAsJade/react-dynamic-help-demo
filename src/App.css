@@ -50,8 +50,10 @@ header .fa-bars {
 }
 
 .visible {
-  background-color: red;
+  background-color: green;
 }
+
+/* Dynamic Help customisation */
 
 .rdh-help-item  {
   color: white;
@@ -70,3 +72,12 @@ header .fa-bars {
   box-shadow: 0px 0px 0px 8px rgba(210, 105, 30, 0.3); 
 }
 
+#help-for-help-toggle {
+  max-width: 12rem;
+}
+
+#help-for-heading {
+  background-color: blue;
+  border-color: blue;
+  padding: 0.5rem;
+}

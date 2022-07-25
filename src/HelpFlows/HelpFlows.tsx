@@ -29,8 +29,22 @@ export function HelpFlows(): JSX.Element {
     return (
         <div className="help-flow-container">
             <HelpFlow id="new-user" showInitially={true}>
-                <HelpItem target="help-toggle">
+                <HelpItem id="help-for-help-toggle" target="help-toggle">
                     <div>Click here to see more Dynamic Help</div>
+                </HelpItem>
+            </HelpFlow>
+
+            <HelpFlow id="banner-dismiss-separately" showInitially={true}>
+                <HelpItem
+                    id="help-for-heading"
+                    target="heading"
+                    position={"bottom-centre"}
+                >
+                    <div>
+                        This is a deliberately obtuse and pointless app,
+                        existing only to display Dynamic Help features and
+                        usage. 😀
+                    </div>
                 </HelpItem>
             </HelpFlow>
 
