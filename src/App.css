@@ -81,3 +81,8 @@ header .fa-bars {
   border-color: blue;
   padding: 0.5rem;
 }
+
+/* the reload help icon */
+sup {
+  cursor: pointer;
+}

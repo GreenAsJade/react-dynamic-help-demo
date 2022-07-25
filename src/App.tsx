@@ -125,7 +125,7 @@ function AppWithHelp(): JSX.Element {
 function App(): JSX.Element {
     const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
 
-    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
+    const { registerTargetItem, resetHelp } = React.useContext(DynamicHelp.Api);
     const { ref: burger, used: burgerClicked } = registerTargetItem("burger");
     const { ref: heading } = registerTargetItem("heading");
 
@@ -177,8 +177,11 @@ function App(): JSX.Element {
             <AppHelpToggle />
             <Router>
                 <header className="App-header">
-                    <div className="heading" ref={heading}>
-                        Statz - a React Dynamic Help demo.
+                    <div className="heading">
+                        <span ref={heading}>
+                            Statz - a React Dynamic Help demo.
+                        </span>
+                        <sup onClick={resetHelp}>⟳</sup>
                     </div>
                     <FA icon={faBars} onClick={showHamburger} ref={burger} />
                     {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}
