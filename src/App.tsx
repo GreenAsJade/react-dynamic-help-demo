@@ -21,6 +21,7 @@ SOFTWARE.
 */
 
 import "./App.css";
+import "../node_modules/react-dynamic-help/lib/es5/DynamicHelp.css";
 
 import React from "react";
 import {
