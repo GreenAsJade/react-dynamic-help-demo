@@ -116,7 +116,7 @@ function AppHelpToggle(): JSX.Element {
 
 function AppWithHelp(): JSX.Element {
     return (
-        <DynamicHelp.HelpProvider>
+        <DynamicHelp.HelpProvider debug={true}>
             <App />
             <HelpFlows />
         </DynamicHelp.HelpProvider>

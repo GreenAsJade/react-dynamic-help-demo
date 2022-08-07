@@ -39,6 +39,7 @@ export function HelpFlows(): JSX.Element {
                     id="help-for-heading"
                     target="heading"
                     position={"bottom-centre"}
+                    highlightTarget={false}
                 >
                     <div>
                         This is a deliberately obtuse and pointless app,
