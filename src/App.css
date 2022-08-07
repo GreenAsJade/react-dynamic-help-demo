@@ -82,6 +82,14 @@ header .fa-bars {
   padding: 0.5rem;
 }
 
+.rdh-help-item>.rdh-popup-dismissers {
+  cursor: pointer;
+}
+
+.rdh-dont-show {
+  margin-right: 0.4rem;
+}
+
 /* the reload help icon */
 sup {
   cursor: pointer;
