@@ -39,8 +39,8 @@ header .fa-bars {
   z-index: 100;
   width: fit-content;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 5px;
+  left: 5px;
 }
 
 #HelpToggle button {
@@ -50,7 +50,7 @@ header .fa-bars {
 }
 
 .visible {
-  background-color: green;
+  background-color: rgb(0, 216, 0);
 }
 
 /* Dynamic Help customisation */
@@ -63,6 +63,31 @@ header .fa-bars {
   font-size: smaller;
   font-style: italic;
   text-align: center;
+}
+
+.demo-note {
+  margin: 4px 0 4px;
+  font-size: smaller;
+}
+
+#dice-pointer {
+  margin-right: 8px !important;
+}
+
+#dice-pointer .rdh-help-item-content {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+#config-pointer {
+  margin-right: 8px !important;
+}
+
+#config-pointer .rdh-help-item-content {
+  display: flex;
+  justify-content: flex-end;
+
 }
 
 #special-help-item {

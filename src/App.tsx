@@ -83,7 +83,7 @@ function HamburgerMenu(props: HamburgerProps): JSX.Element {
 
 function AppHelpToggle(): JSX.Element {
     const [appHelpVisible, setVisible] = React.useState(false);
-    const { registerTargetItem, enableFlow, enableHelp } = React.useContext(
+    const { registerTargetItem, triggerFlow, enableHelp } = React.useContext(
         DynamicHelp.Api,
     );
 
@@ -92,12 +92,12 @@ function AppHelpToggle(): JSX.Element {
 
     const toggleHelpVis = () => {
         if (appHelpVisible) {
-            enableFlow("new-user");
+            triggerFlow("new-user");
             enableHelp(false);
         } else {
             signalButtonUsed();
-            enableFlow("basic");
-            enableHelp("true");
+            triggerFlow("basic");
+            enableHelp(true);
         }
         setVisible(!appHelpVisible);
     };
@@ -126,7 +126,7 @@ function AppWithHelp(): JSX.Element {
 function App(): JSX.Element {
     const [hamburgerOpen, setHamburgerOpen] = React.useState(false);
 
-    const { registerTargetItem, resetHelp } = React.useContext(DynamicHelp.Api);
+    const { registerTargetItem } = React.useContext(DynamicHelp.Api);
     const { ref: burger, used: burgerClicked } = registerTargetItem("burger");
     const { ref: heading } = registerTargetItem("heading");
 
@@ -182,7 +182,6 @@ function App(): JSX.Element {
                         <span ref={heading}>
                             Statz - a React Dynamic Help demo.
                         </span>
-                        <sup onClick={resetHelp}>⟳</sup>
                     </div>
                     <FA icon={faBars} onClick={showHamburger} ref={burger} />
                     {hamburgerOpen && <HamburgerMenu hide={hideHamburger} />}

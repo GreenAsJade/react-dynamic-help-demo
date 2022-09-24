@@ -5,4 +5,4 @@ This is an app such as one might use for generating role-playing character stats
 
 See it running here: https://greenasjade.github.io/react-dynamic-help-demo/
 
-(This demo is on react-dynamic-help v1.1.2)
+(This demo is tested on react-dynamic-help v2.4.3)

@@ -57,7 +57,7 @@ export function HelpFlows(): JSX.Element {
                     <>
                         <div>Enter the name for a stat</div>
                         <div className="demo-note">
-                            (positioned differently){" "}
+                            (positioned differently)
                         </div>
                     </>
                 </HelpItem>
@@ -79,30 +79,27 @@ export function HelpFlows(): JSX.Element {
                     position="bottom-left"
                 >
                     <>
-                        <div>
-                            ... and go to the dice page to roll your stats!
+                        <div>Now go to the dice page to roll your stats!</div>
+                        <div className="demo-note">
+                            (help item with custom id for styling, and...
                         </div>
                         <div className="demo-note">
-                            (help item with custom id for styling...
-                        </div>
-                        <div className="demo-note">
-                            ... same flow, item in different Route)
+                            ... a help item that's in a different Route)
                         </div>
                     </>
                 </HelpItem>
                 <HelpItem
                     target="hamburger-dice"
                     position="top-left"
-                    anchor={"top-right"}
-                    margin="0 3px 0 0"
+                    anchor="top-right"
+                    id="dice-pointer"
                 >
                     <FA icon={faArrowRight} fixedWidth />
                 </HelpItem>
                 <HelpItem
                     target="actual-dice"
-                    position="bottom-right"
-                    anchor="bottom-left"
-                    margin="0 0 -4px 3px"
+                    position="top-right"
+                    anchor="top-left"
                 >
                     <FA icon={faArrowLeft} fixedWidth />
                     <span>now click to roll!</span>
@@ -120,7 +117,7 @@ export function HelpFlows(): JSX.Element {
                     target="hamburger-config"
                     position="top-left"
                     anchor={"top-right"}
-                    margin="0 3px 0 0"
+                    id="config-pointer"
                 >
                     <FA icon={faArrowRight} fixedWidth />
                 </HelpItem>
@@ -131,7 +128,6 @@ export function HelpFlows(): JSX.Element {
                     target="dice"
                     position="top-left"
                     anchor={"top-right"}
-                    margin="0 3px 0 0"
                 >
                     <FA icon={faArrowRight} fixedWidth />
                 </HelpItem>

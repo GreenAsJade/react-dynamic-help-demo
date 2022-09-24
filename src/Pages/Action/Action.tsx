@@ -38,7 +38,7 @@ type ActionProps = {
 
 export const Action = (props: ActionProps): JSX.Element => {
     // Connect targets to help system...
-    const { registerTargetItem, enableFlow } = React.useContext(
+    const { registerTargetItem, triggerFlow } = React.useContext(
         DynamicHelp.Api,
     );
     const { ref: dice, used: diceUsed } = registerTargetItem("actual-dice");
@@ -51,7 +51,7 @@ export const Action = (props: ActionProps): JSX.Element => {
         );
 
         if (unRolled === 1) {
-            enableFlow("finished-rolling");
+            triggerFlow("finished-rolling");
         }
 
         const newValue = Math.floor(Math.random() * range) + 1;
@@ -90,7 +90,7 @@ export const Action = (props: ActionProps): JSX.Element => {
                         ),
                     )
                 ) : (
-                    <span>No statz!</span>
+                    <span>(Need some statz first!)</span>
                 )}
             </div>
         </div>
